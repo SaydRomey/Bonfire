@@ -1,0 +1,63 @@
+{
+  "project": "Bonfire game UI kit",
+  "palette": {
+    "bg": "#171914",
+    "wood": "#583a25",
+    "wood_light": "#9b6b3e",
+    "gold": "#e5b96c",
+    "cream": "#f4dfb4",
+    "forest": "#809555",
+    "moss": "#586d43",
+    "fire": "#f5a244",
+    "shadow": "#17140f"
+  },
+  "icons": [
+    "axe",
+    "backpack",
+    "berries",
+    "branch",
+    "campfire",
+    "check",
+    "close",
+    "cold",
+    "compass",
+    "crafting",
+    "food",
+    "friends",
+    "gear",
+    "heart",
+    "home",
+    "leaf",
+    "log",
+    "map",
+    "mushroom",
+    "pause",
+    "pickaxe",
+    "rope",
+    "stamina",
+    "stone",
+    "tent",
+    "water"
+  ],
+  "nine_patch_margins": {
+    "button": [
+      28,
+      24,
+      28,
+      24
+    ],
+    "panel": [
+      44,
+      44,
+      44,
+      44
+    ],
+    "header": [
+      27,
+      25,
+      27,
+      25
+    ]
+  },
+  "concept_images_are_references_only": true
+}

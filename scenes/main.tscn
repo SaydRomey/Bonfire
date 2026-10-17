@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://yffl8issjwc8"]
+
+[ext_resource type="Script" uid="uid://dlgf8u8wdg2ie" path="res://scripts/terrain.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://oncyuc303prh" path="res://scripts/world_generator.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://bxl7bdtqld74q" path="res://scripts/player.gd" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://bb70j2211ktxw" path="res://scripts/hud.gd" id="3_tbgi4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_jyhfs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbgi4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sugp2"]
+radius = 0.35
+height = 1.6
+
+[node name="Main" type="Node3D" unique_id=1206752791]
+
+[node name="World" type="Node3D" parent="." unique_id=124447471]
+
+[node name="Ground" type="StaticBody3D" parent="World" unique_id=2096835048]
+physics_material_override = SubResource("PhysicsMaterial_jyhfs")
+script = ExtResource("1_jyhfs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground" unique_id=892647788]
+mesh = SubResource("PlaceholderMesh_jyhfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground" unique_id=1489253568]
+shape = SubResource("BoxShape3D_tbgi4")
+
+[node name="GeneratedObjects" type="Node3D" parent="World" unique_id=1234680091]
+
+[node name="WorldGenerator" type="Node" parent="World" unique_id=82367571]
+script = ExtResource("1_sugp2")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=25075111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_jyhfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1189462417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("CapsuleShape3D_sugp2")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1740492483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="InteractionRay" type="RayCast3D" parent="Player/Camera3D" unique_id=2019155169]
+target_position = Vector3(0, 0, -4)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=469208204]
+script = ExtResource("3_tbgi4")
+
+[node name="WoodLabel" type="Label" parent="HUD" unique_id=797847815]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=882937592]

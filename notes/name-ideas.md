@@ -1,0 +1,107 @@
+
+# Names Brainstorm
+
+potential names that fit the game’s core idea: 
+a relaxed multiplayer wilderness game about exploring, 
+building a campsite, and hanging out around a fire.
+
+ 
+-	Afterglow  
+-	Among the Pines  
+-	Around the Fire  
+-	At Trail's End  
+-	Beneath the Pines  
+-	Beside the Fire  
+-	Beyond the Trail  
+-	Bonfire  
+-	Bonfire Nights  
+-	Bonfire Together 
+-	Bonfire Trails  
+-	Bonfire Wilds  
+-	Bonfire Woods  
+-	By the Fire  
+-	Camp After Dark  
+-	Campbound  
+-	Campfire  
+-	Campfire Country  
+-	Campfire Together  
+-	Campfire Trails  
+-	Campstead  
+-	Common Flame  
+-	Common Ground  
+-	Common Hearth  
+-	Ember Grove  
+-	Ember Hollow  
+-	Emberfall  
+-	Emberlands  
+-	Emberlight  
+-	Emberwood  
+-	Evercamp  
+-	Everember  
+-	Everkindle  
+-	Firelight  
+-	Fireside  
+-	Fireside Wilds  
+-	Firestead  
+-	Firewatch  
+-	Forest & Flame  
+-	Forest Hearth  
+-	Forest Light  
+-	Gather Around  
+-	Gathered  
+-	Gatherwood  
+-	Hearthbound  
+-	Hearthside  
+-	Hearthwild  
+-	Hearthwood  
+-	Home Among Pines  
+-	Home in the Wild  
+-	Just One More Log  
+-	Kindlewild  
+-	Kindlewood  
+-	Kindling  
+-	Kindred Flame  
+-	Last Light  
+-	Meet Me at the Fire  
+-	Meet Me in the Woods  
+-	Meet Me Outside  
+-	Night at Camp  
+-	Nightwood  
+-	Off the Trail  
+-	One More Log  
+-	Open Hearth  
+-	Our Little Camp  
+-	Our Place in the Woods  
+-	Our Wild Place  
+-	Pinefire  
+-	Pines & Embers  
+-	Pull Up a Log  
+-	Quiet Trails  
+-	Quiet Wilds  
+-	Quiet Woods  
+-	Shared Trails  
+-	Shared Wilderness  
+-	Softwood  
+-	Stay Awhile  
+-	Stay by the Fire  
+-	Stillwild  
+-	Stillwood  
+-	Take a Seat  
+-	The Campfire  
+-	The Long Evening  
+-	Timber & Flame  
+-	Trail & Timber  
+-	Trail's End  
+-	Under the Canopy  
+-	Under the Pines  
+-	Wander & Rest  
+-	Wanderfire  
+-	Wanderwild  
+-	Wanderwood  
+-	Wayfarer's Camp  
+-	Wayfarer's Fire  
+-	Wild Ember  
+-	Wild Hearth  
+-	Wildfire Camp  
+-	Wildstead  
+-	Wood & Ember   
