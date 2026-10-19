@@ -1,22 +1,23 @@
-# tree_factory.gd
 extends RefCounted
+## Constructs trees without choosing where they should spawn.
+
+const MaterialFactory = preload("res://scripts/factories/material_factory.gd")
 
 
-static func create_tree(resource_amount: int = 1) -> StaticBody3D:
-	var tree := StaticBody3D.new()
+# Creates a tree with visuals, collision, and collectible wood.
+static func create_tree(resource_amount: int = 1) -> BonfireResourceNode:
+	var tree := BonfireResourceNode.new()
 	tree.name = "Tree"
-
-	tree.set_script(preload("res://scripts/resource_node.gd"))
 	tree.resource_type = "wood"
 	tree.resource_amount = resource_amount
 
 	_add_trunk(tree)
 	_add_leaves(tree)
 	_add_collision(tree)
-
 	return tree
 
 
+# Adds the tree's brown cylindrical trunk.
 static func _add_trunk(tree: StaticBody3D) -> void:
 	var trunk := MeshInstance3D.new()
 	trunk.name = "Trunk"
@@ -28,14 +29,11 @@ static func _add_trunk(tree: StaticBody3D) -> void:
 
 	trunk.mesh = trunk_mesh
 	trunk.position.y = 1.5
-
-	var trunk_material := StandardMaterial3D.new()
-	trunk_material.albedo_color = Color(0.35, 0.18, 0.08)
-	trunk.material_override = trunk_material
-
+	trunk.material_override = MaterialFactory.bark()
 	tree.add_child(trunk)
 
 
+# Adds the canopy above the trunk.
 static func _add_leaves(tree: StaticBody3D) -> void:
 	var leaves := MeshInstance3D.new()
 	leaves.name = "Leaves"
@@ -46,23 +44,19 @@ static func _add_leaves(tree: StaticBody3D) -> void:
 
 	leaves.mesh = leaves_mesh
 	leaves.position.y = 3.1
-
-	var leaves_material := StandardMaterial3D.new()
-	leaves_material.albedo_color = Color(0.08, 0.35, 0.12)
-	leaves.material_override = leaves_material
-
+	leaves.material_override = MaterialFactory.leaves()
 	tree.add_child(leaves)
 
 
+# Adds collision so the player and interaction ray can hit the trunk.
 static func _add_collision(tree: StaticBody3D) -> void:
 	var collision := CollisionShape3D.new()
 	collision.name = "CollisionShape3D"
 
-	var collision_shape := CylinderShape3D.new()
-	collision_shape.radius = 0.45
-	collision_shape.height = 3.2
+	var shape := CylinderShape3D.new()
+	shape.radius = 0.45
+	shape.height = 3.2
 
-	collision.shape = collision_shape
+	collision.shape = shape
 	collision.position.y = 1.6
-
 	tree.add_child(collision)

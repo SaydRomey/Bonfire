@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://bij8ygwf0htwf"]
+
+[ext_resource type="Script" uid="uid://tdol081wtfpb" path="res://scripts/ui/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cx5imvw37hsfa" path="res://assets/ui/panels/panel_parchment.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cyugs1e7k587n" path="res://assets/ui/buttons/button_normal.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://yv4eqnq6ets7" path="res://assets/ui/buttons/button_pressed.png" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dcwfofjl1s2ox" path="res://assets/ui/buttons/button_hover.png" id="5_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://cikvh3g1avgqf" path="res://assets/ui/buttons/button_disabled.png" id="6_jk1qb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtw2f"]
+font_size = 48
+font_color = Color(0.28627452, 0.1764706, 0.10980392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_exu2g"]
+font_size = 18
+font_color = Color(0.64705884, 0.54509807, 0.40392157, 1)
+
+[node name="MainMenu" type="Control" unique_id=916796221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1683727199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12620941, 0.24106827, 0.123532526, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1064034288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuPanel" type="NinePatchRect" parent="CenterContainer" unique_id=909987625]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 2
+texture = ExtResource("2_bqqt6")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuPanel" unique_id=470730089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/MenuPanel/MarginContainer" unique_id=1488081732]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Buttons" unique_id=442393495]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BONFIRE"
+label_settings = SubResource("LabelSettings_rtw2f")
+horizontal_alignment = 1
+
+[node name="SubTitle" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Buttons" unique_id=2069634997]
+layout_mode = 2
+text = "A place to gather"
+label_settings = SubResource("LabelSettings_exu2g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="CenterContainer/MenuPanel/MarginContainer/Buttons" unique_id=2002352910]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_rtw2f")
+texture_pressed = ExtResource("4_oa1go")
+texture_hover = ExtResource("5_tbmy8")
+texture_disabled = ExtResource("6_jk1qb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Buttons/PlayButton" unique_id=675523747]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="CenterContainer/MenuPanel/MarginContainer/Buttons" unique_id=188782333]
+visible = false
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_rtw2f")
+texture_pressed = ExtResource("4_oa1go")
+texture_hover = ExtResource("5_tbmy8")
+texture_disabled = ExtResource("6_jk1qb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Buttons/SettingsButton" unique_id=1563851847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="CenterContainer/MenuPanel/MarginContainer/Buttons" unique_id=846652146]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_rtw2f")
+texture_pressed = ExtResource("4_oa1go")
+texture_hover = ExtResource("5_tbmy8")
+texture_disabled = ExtResource("6_jk1qb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Buttons/QuitButton" unique_id=1869566548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1

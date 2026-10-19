@@ -1,58 +1,95 @@
-[gd_scene format=3 uid="uid://yffl8issjwc8"]
+[gd_scene format=3 uid="uid://c1g5gvlm434ba"]
 
-[ext_resource type="Script" uid="uid://dlgf8u8wdg2ie" path="res://scripts/terrain.gd" id="1_jyhfs"]
-[ext_resource type="Script" uid="uid://oncyuc303prh" path="res://scripts/world_generator.gd" id="1_sugp2"]
-[ext_resource type="Script" uid="uid://bxl7bdtqld74q" path="res://scripts/player.gd" id="2_jyhfs"]
-[ext_resource type="Script" uid="uid://bb70j2211ktxw" path="res://scripts/hud.gd" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://cahd6h0y0o1j2" path="res://scripts/terrain.gd" id="1_terrain"]
+[ext_resource type="Script" uid="uid://co7vc877qdob" path="res://scripts/world_generator.gd" id="2_generator"]
+[ext_resource type="Script" uid="uid://bk8jdqc7lrtr5" path="res://scripts/player.gd" id="3_player"]
+[ext_resource type="Script" uid="uid://b6n54vxtim3i7" path="res://scripts/hud.gd" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://d53ruqt1wg50" path="res://scenes/ui/pause_menu.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://b5i7hytlsc7bd" path="res://scenes/ui/inventory.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://ba1mhrvmefr31" path="res://scenes/ui/hotbar.tscn" id="7_o6xl0"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
-
-[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_jyhfs"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tbgi4"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sugp2"]
+[sub_resource type="CapsuleShape3D" id="Capsule_1"]
 radius = 0.35
 height = 1.6
 
-[node name="Main" type="Node3D" unique_id=1206752791]
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.58, 0.74, 0.88, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.77, 0.83, 1)
+ambient_light_energy = 0.7
 
-[node name="World" type="Node3D" parent="." unique_id=124447471]
+[node name="Main" type="Node3D" unique_id=1223133775]
 
-[node name="Ground" type="StaticBody3D" parent="World" unique_id=2096835048]
-physics_material_override = SubResource("PhysicsMaterial_jyhfs")
-script = ExtResource("1_jyhfs")
+[node name="World" type="Node3D" parent="." unique_id=2115635106]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground" unique_id=892647788]
-mesh = SubResource("PlaceholderMesh_jyhfs")
+[node name="Ground" type="StaticBody3D" parent="World" unique_id=1819221417]
+script = ExtResource("1_terrain")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground" unique_id=1489253568]
-shape = SubResource("BoxShape3D_tbgi4")
+[node name="GeneratedObjects" type="Node3D" parent="World" unique_id=1083931556]
 
-[node name="GeneratedObjects" type="Node3D" parent="World" unique_id=1234680091]
+[node name="WorldGenerator" type="Node" parent="World" unique_id=438966069]
+script = ExtResource("2_generator")
 
-[node name="WorldGenerator" type="Node" parent="World" unique_id=82367571]
-script = ExtResource("1_sugp2")
-
-[node name="Player" type="CharacterBody3D" parent="." unique_id=25075111]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1034347580]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("2_jyhfs")
+script = ExtResource("3_player")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1189462417]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1294202918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("Capsule_1")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1534377143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-shape = SubResource("CapsuleShape3D_sugp2")
+current = true
+far = 160.0
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1740492483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-
-[node name="InteractionRay" type="RayCast3D" parent="Player/Camera3D" unique_id=2019155169]
+[node name="InteractionRay" type="RayCast3D" parent="Player/Camera3D" unique_id=494538966]
 target_position = Vector3(0, 0, -4)
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=469208204]
-script = ExtResource("3_tbgi4")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2023918193]
+process_mode = 3
+script = ExtResource("4_hud")
 
-[node name="WoodLabel" type="Label" parent="HUD" unique_id=797847815]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="WoodLabel" type="Label" parent="HUD" unique_id=1916438089]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 230.0
+offset_bottom = 44.0
+text = "Wood: 0"
 
-[node name="Sun" type="DirectionalLight3D" parent="." unique_id=882937592]
+[node name="HelpLabel" type="Label" parent="HUD" unique_id=258346346]
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 790.0
+offset_bottom = 73.0
+text = "WASD Move | E Collect/Place | B Preview | Left Click Confirm | Right Click Cancel | Esc Quit"
+
+[node name="Crosshair" type="Label" parent="HUD" unique_id=1623877812]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+text = "+"
+horizontal_alignment = 1
+
+[node name="InventoryMenu" parent="HUD" unique_id=585163030 instance=ExtResource("6_tefeu")]
+visible = false
+
+[node name="PauseMenu" parent="HUD" unique_id=249437427 instance=ExtResource("5_tbgi4")]
+visible = false
+
+[node name="Hotbar" parent="HUD" unique_id=896851092 instance=ExtResource("7_o6xl0")]
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=2090294912]
+transform = Transform3D(0.87758255, 0.37554693, -0.2980157, 0, 0.62161, 0.7833269, 0.47942555, -0.687434, 0.54551405, 0, 0, 0)
+light_energy = 1.4
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=23642600]
+environment = SubResource("Environment_1")

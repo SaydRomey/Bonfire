@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b5i7hytlsc7bd"]
+
+[ext_resource type="Texture2D" uid="uid://cx5imvw37hsfa" path="res://assets/ui/panels/panel_parchment.png" id="1_avmd0"]
+[ext_resource type="Texture2D" uid="uid://b8n4djd14y5n" path="res://assets/ui/overlays/menu_dimmer.png" id="1_xeaml"]
+[ext_resource type="Texture2D" uid="uid://p3lgkdg2o8gg" path="res://assets/ui/slots/inventory_slot_normal.png" id="2_xeaml"]
+
+[node name="InventoryMenu" type="Control" unique_id=585163030]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="TextureRect" parent="." unique_id=330652031]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xeaml")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1847863947]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="NinePatchRect" parent="CenterContainer" unique_id=807958908]
+custom_minimum_size = Vector2(750, 570)
+layout_mode = 2
+texture = ExtResource("1_avmd0")
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=1764512737]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heading" type="Label" parent="CenterContainer/Panel/Content" unique_id=1489072288]
+layout_mode = 2
+
+[node name="InventoryGrid" type="GridContainer" parent="CenterContainer/Panel/Content" unique_id=1475530611]
+layout_mode = 2
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Panel/Content/InventoryGrid" unique_id=1601134991]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("2_xeaml")
+
+[node name="WoodCount" type="Label" parent="CenterContainer/Panel/Content" unique_id=1267560055]
+layout_mode = 2

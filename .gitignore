@@ -1,3 +1,58 @@
 # Godot 4+ specific ignores
 .godot/
+.nomedia
 /android/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+
+# Godot editor folders
+.import/
+export/
+*.godot
+*.import
+
+# 
+# *.uid
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# GDExtensions CPP Bindings
+# extern/godot-cpp/
+
+# C++ build artifacts
+build/
+bin/
+lib/
+
+# godot-cpp build outputs
+extern/godot-cpp/bin/
+extern/godot-cpp/include/gen/
+
+# Editor settings
+.vscode/
+*.log
+
+# Temporary files
+tmp*
+
+# Compressed archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.jar
+
+# Ignore all .ini files
+*.ini

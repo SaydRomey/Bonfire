@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://d53ruqt1wg50"]
+
+[ext_resource type="Texture2D" uid="uid://dei2qtdavxnyo" path="res://assets/ui/panels/panel_wood.png" id="2_f6eus"]
+[ext_resource type="Texture2D" uid="uid://cyugs1e7k587n" path="res://assets/ui/buttons/button_normal.png" id="3_4inpj"]
+[ext_resource type="Texture2D" uid="uid://yv4eqnq6ets7" path="res://assets/ui/buttons/button_pressed.png" id="4_8fwbo"]
+[ext_resource type="Texture2D" uid="uid://dcwfofjl1s2ox" path="res://assets/ui/buttons/button_hover.png" id="5_2rlsb"]
+[ext_resource type="Texture2D" uid="uid://cikvh3g1avgqf" path="res://assets/ui/buttons/button_disabled.png" id="6_coo1x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtw2f"]
+font_size = 32
+
+[node name="PauseMenu" type="Control" unique_id=1465470827]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=266633352]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1619634474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="NinePatchRect" parent="CenterContainer" unique_id=85684235]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 2
+texture = ExtResource("2_f6eus")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=591736962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=577104237]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Heading" type="Label" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=2105367561]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_rtw2f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=1763863088]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_4inpj")
+texture_pressed = ExtResource("4_8fwbo")
+texture_hover = ExtResource("5_2rlsb")
+texture_disabled = ExtResource("6_coo1x")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/Buttons/ResumeButton" unique_id=1466503164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=886611913]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+mouse_filter = 2
+texture_normal = ExtResource("3_4inpj")
+texture_pressed = ExtResource("4_8fwbo")
+texture_hover = ExtResource("5_2rlsb")
+texture_disabled = ExtResource("6_coo1x")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="CenterContainer/Panel/MarginContainer/Buttons/MainMenuButton" unique_id=1854292950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAIN MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=787733073]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+mouse_filter = 2
+texture_normal = ExtResource("3_4inpj")
+texture_pressed = ExtResource("4_8fwbo")
+texture_hover = ExtResource("5_2rlsb")
+texture_disabled = ExtResource("6_coo1x")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label3" type="Label" parent="CenterContainer/Panel/MarginContainer/Buttons/QuitButton" unique_id=796001888]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,48 +1,50 @@
-# rock_factory.gd
 extends RefCounted
+## Constructs slightly varied rocks using the world generator's seeded RNG.
+
+const MaterialFactory = preload("res://scripts/factories/material_factory.gd")
 
 
+# Creates a rock with matching approximate visual and collision dimensions.
 static func create_rock(rng: RandomNumberGenerator) -> StaticBody3D:
 	var rock := StaticBody3D.new()
 	rock.name = "Rock"
 
-	_add_visual(rock, rng)
-	_add_collision(rock)
+	var radius := rng.randf_range(0.35, 0.8)
+	var height := rng.randf_range(0.35, 0.7)
+	var width_scale := rng.randf_range(1.0, 1.6)
+	var depth_scale := rng.randf_range(1.0, 1.6)
+	var vertical_scale := rng.randf_range(0.5, 0.9)
 
+	_add_visual(rock, radius, height, Vector3(width_scale, vertical_scale, depth_scale))
+	_add_collision(rock, radius * max(width_scale, depth_scale), height * vertical_scale)
 	return rock
 
 
-static func _add_visual(rock: StaticBody3D, rng: RandomNumberGenerator) -> void:
-	var mesh_instance := MeshInstance3D.new()
-	mesh_instance.name = "RockMesh"
+# Adds a flattened, variably scaled sphere as the visible rock.
+static func _add_visual(rock: StaticBody3D, radius: float, height: float, visual_scale: Vector3) -> void:
+	var visual := MeshInstance3D.new()
+	visual.name = "RockMesh"
 
 	var mesh := SphereMesh.new()
-	mesh.radius = rng.randf_range(0.35, 0.8)
-	mesh.height = rng.randf_range(0.35, 0.7)
+	mesh.radius = radius
+	mesh.height = height
 
-	mesh_instance.mesh = mesh
-	mesh_instance.position.y = 0.25
-	mesh_instance.scale = Vector3(
-		rng.randf_range(1.0, 1.6),
-		rng.randf_range(0.5, 0.9),
-		rng.randf_range(1.0, 1.6)
-	)
-
-	var material := StandardMaterial3D.new()
-	material.albedo_color = Color(0.35, 0.35, 0.35)
-	mesh_instance.material_override = material
-
-	rock.add_child(mesh_instance)
+	visual.mesh = mesh
+	visual.position.y = 0.25
+	visual.scale = visual_scale
+	visual.material_override = MaterialFactory.rock()
+	rock.add_child(visual)
 
 
-static func _add_collision(rock: StaticBody3D) -> void:
+# Adds an approximate cylindrical collider without scaling a physics shape.
+static func _add_collision(rock: StaticBody3D, radius: float, height: float) -> void:
 	var collision := CollisionShape3D.new()
 	collision.name = "CollisionShape3D"
 
-	var collision_shape := SphereShape3D.new()
-	collision_shape.radius = 0.7
+	var shape := CylinderShape3D.new()
+	shape.radius = radius
+	shape.height = max(height, 0.05)
 
-	collision.shape = collision_shape
+	collision.shape = shape
 	collision.position.y = 0.25
-
 	rock.add_child(collision)

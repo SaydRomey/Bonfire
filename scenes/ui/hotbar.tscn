@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ba1mhrvmefr31"]
+
+[ext_resource type="PackedScene" uid="uid://cvoxrb45ieekg" path="res://scenes/ui/components/inventory_slot.tscn" id="1_yjdhc"]
+
+[node name="Hotbar" type="HBoxContainer" unique_id=553747961]
+size_flags_vertical = 8
+
+[node name="InventorySlot" parent="." unique_id=1236288751 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot2" parent="." unique_id=1242153744 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot3" parent="." unique_id=1587736950 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot4" parent="." unique_id=1833579182 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot5" parent="." unique_id=1441746858 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot6" parent="." unique_id=1112492262 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot7" parent="." unique_id=139735275 instance=ExtResource("1_yjdhc")]
+
+[node name="InventorySlot8" parent="." unique_id=162388712 instance=ExtResource("1_yjdhc")]
