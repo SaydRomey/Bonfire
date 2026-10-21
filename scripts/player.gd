@@ -33,10 +33,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_rotate_view(event.relative)
 
-	#if event.is_action_pressed("ui_cancel"):
-		#get_tree().quit()  # Esc quits the running game, even in placement mode.
-		#return
-
 	if event.is_action_pressed("place_campfire"):
 		if placement_mode:
 			_cancel_campfire_placement()

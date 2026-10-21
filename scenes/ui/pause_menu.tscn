@@ -88,7 +88,6 @@ vertical_alignment = 1
 [node name="MainMenuButton" type="TextureButton" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=886611913]
 custom_minimum_size = Vector2(280, 60)
 layout_mode = 2
-mouse_filter = 2
 texture_normal = ExtResource("3_4inpj")
 texture_pressed = ExtResource("4_8fwbo")
 texture_hover = ExtResource("5_2rlsb")
@@ -110,7 +109,6 @@ vertical_alignment = 1
 [node name="QuitButton" type="TextureButton" parent="CenterContainer/Panel/MarginContainer/Buttons" unique_id=787733073]
 custom_minimum_size = Vector2(280, 60)
 layout_mode = 2
-mouse_filter = 2
 texture_normal = ExtResource("3_4inpj")
 texture_pressed = ExtResource("4_8fwbo")
 texture_hover = ExtResource("5_2rlsb")

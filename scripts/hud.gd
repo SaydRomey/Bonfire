@@ -23,7 +23,7 @@ var current_screen: Screen = Screen.GAME
 @onready var inventory_menu: Control = $InventoryMenu
 
 @onready var inventory_wood_count: Label = \
-	$InventoryMenu/CenterContainer/Panel/Content/WoodCount
+	$InventoryMenu/CenterContainer/Panel/MarginContainer/Content/WoodCount
 
 @onready var resume_button: TextureButton = \
 	$PauseMenu/CenterContainer/Panel/MarginContainer/Buttons/ResumeButton
@@ -78,6 +78,9 @@ func _input(event: InputEvent) -> void:
 
 func _set_screen(screen: Screen) -> void:
 	current_screen = screen
+	
+	wood_label.visible = screen == Screen.GAME
+	help_label.visible = screen == Screen.GAME
 
 	pause_menu.visible = screen == Screen.PAUSE
 	inventory_menu.visible = screen == Screen.INVENTORY
