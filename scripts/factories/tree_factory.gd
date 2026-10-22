@@ -1,3 +1,4 @@
+# tree_factory.gd
 extends RefCounted
 ## Constructs trees without choosing where they should spawn.
 

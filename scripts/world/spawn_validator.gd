@@ -1,8 +1,21 @@
+# spawn_validator.gd
 extends RefCounted
-## Applies basic terrain suitability rules to world-object spawning.
+## Checks basic terrain suitability for procedural world objects.
+
+# TODO:
+# - Check slope
+# - Check distance from spawn
+# - Check terrain height
+# - Check whether a position is valid for trees, rocks, bushes, etc.
+# - no trees too close to spawn
+# - no rocks inside trees
+# - no objects in water
+# - no objects on steep slopes
+# - no campfires intersecting existing objects
+# - biome-specific spawn rules
 
 
-# Returns true when a point is away from spawn and the nearby terrain is gentle.
+# Rejects points near spawn or where local height differences exceed the limit.
 static func is_suitable(
 	terrain: BonfireTerrain,
 	position: Vector3,
@@ -13,11 +26,11 @@ static func is_suitable(
 	if Vector2(position.x, position.z).length() < min_spawn_distance:
 		return false
 
-	var center := terrain.get_height_at(position.x, position.z)
-	var nearby_x := terrain.get_height_at(position.x + check_distance, position.z)
-	var nearby_z := terrain.get_height_at(position.x, position.z + check_distance)
+	var center: float = terrain.get_height_at(position.x, position.z)
+	var nearby_x: float = terrain.get_height_at(position.x + check_distance, position.z)
+	var nearby_z: float = terrain.get_height_at(position.x, position.z + check_distance)
 
 	return (
-		abs(center - nearby_x) <= max_height_difference
-		and abs(center - nearby_z) <= max_height_difference
+		absf(center - nearby_x) <= max_height_difference
+		and absf(center - nearby_z) <= max_height_difference
 	)

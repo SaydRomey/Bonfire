@@ -1,3 +1,4 @@
+# terrain.gd
 class_name BonfireTerrain
 extends StaticBody3D
 ## Generates a noise-based terrain mesh and corresponding heightmap collision.

@@ -1,3 +1,4 @@
+# campfire.gd
 class_name BonfireCampfire
 extends StaticBody3D
 ## Renders a campfire as either a solid object or a colored placement preview.

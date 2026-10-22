@@ -1,5 +1,5 @@
 extends Node
-## Selects deterministic spawn positions and delegates object construction to factories.
+## Places procedural resources; factories build objects, and validators check locations.
 
 const TreeFactory = preload("res://scripts/factories/tree_factory.gd")
 const RockFactory = preload("res://scripts/factories/rock_factory.gd")
@@ -22,52 +22,59 @@ func _ready() -> void:
 	call_deferred("generate_world")
 
 
-# Clears and repopulates the forest with trees and rocks.
+# Rebuilds the same forest for the same seed and settings.
 func generate_world() -> void:
+	rng.seed = seed_value  # Reset the sequence for deterministic regeneration.
 	_clear_generated_objects()
 	_generate_trees()
 	_generate_rocks()
 
 
-# Creates and positions collectible trees.
+# Places collectible trees at approved terrain positions.
 func _generate_trees() -> void:
-	for i in range(tree_count):
+	for _index in range(tree_count):
+		var location: Dictionary = _find_valid_spawn_position()
+		if location.is_empty():
+			continue
+
 		var tree := TreeFactory.create_tree(1)
 		generated_objects.add_child(tree)
-		tree.global_position = _random_valid_world_position()
+		tree.global_position = location["position"]
 
 
-# Creates and positions varied rocks.
+# Places rocks at approved terrain positions.
 func _generate_rocks() -> void:
-	for i in range(rock_count):
+	for _index in range(rock_count):
+		var location: Dictionary = _find_valid_spawn_position()
+		if location.is_empty():
+			continue
+
 		var rock := RockFactory.create_rock(rng)
 		generated_objects.add_child(rock)
-		rock.global_position = _random_valid_world_position()
+		rock.global_position = location["position"]
 
 
-# Removes previously generated objects before regeneration.
+# Removes previous procedural objects before regeneration.
 func _clear_generated_objects() -> void:
 	for child in generated_objects.get_children():
 		generated_objects.remove_child(child)
 		child.queue_free()
 
 
-# Returns a suitable position, with a fallback if no candidate passes.
-func _random_valid_world_position() -> Vector3:
-	for attempt in range(30):
-		var position := _random_world_position()
+# Finds a suitable point, or returns an empty result instead of using an invalid one.
+func _find_valid_spawn_position() -> Dictionary:
+	for _attempt in range(30):
+		var position: Vector3 = _random_world_position()
 		if SpawnValidator.is_suitable(terrain, position):
-			return position
+			return {"position": position}
 
-	return _random_world_position()  # Keep generation from stalling indefinitely.
+	return {}  # Skip this object if no safe location was found.
 
 
-# Samples an X/Z position inside both the generator region and terrain bounds.
+# Samples a point inside the playable terrain, leaving a small edge margin.
 func _random_world_position() -> Vector3:
 	var terrain_size: float = float(terrain.grid_resolution) * terrain.cell_size
 	var half_size: float = maxf(0.0, minf(world_size, terrain_size - 4.0)) * 0.5
-
 	var x: float = rng.randf_range(-half_size, half_size)
 	var z: float = rng.randf_range(-half_size, half_size)
-
 	return Vector3(x, terrain.get_height_at(x, z), z)

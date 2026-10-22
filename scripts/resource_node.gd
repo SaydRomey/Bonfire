@@ -1,3 +1,4 @@
+# ressource_node.gd
 class_name BonfireResourceNode
 extends StaticBody3D
 ## Resource-bearing world object that responds to the player's interaction ray.

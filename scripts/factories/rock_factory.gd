@@ -1,3 +1,4 @@
+# rock_factory.gd
 extends RefCounted
 ## Constructs slightly varied rocks using the world generator's seeded RNG.
 

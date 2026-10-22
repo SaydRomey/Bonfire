@@ -53,6 +53,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=577104237]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 18
 alignment = 1
 
